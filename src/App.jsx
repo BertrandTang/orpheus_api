@@ -69,6 +69,14 @@ function App() {
     alert(` Le prix du produit avec l'id ${data.id} a été modifié `)
   }
 
+      async function handleDeleteProduct(productId) {
+    const response = await fetch(`https://fakestoreapi.com/products/${productId}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    alert(` Le produit avec l'id ${data.id} a été supprimé `)
+  }
+
   return (products &&
 
     <Container>
@@ -92,8 +100,9 @@ function App() {
                 </Card.Text>
               </Card.Body>
               <Card.Footer className="d-flex justify-content-center">
-                <Button variant="primary" className="d-flex m-1" onClick={()=> handleModifyProduct(product.id)}>Modifier le produit complet</Button>
-                <Button variant="primary" className="d-flex m-1" onClick={()=> handleModifyPriceProduct(product.id)}>Modifier le prix du produit</Button>
+                <Button variant="primary" className="m-1" onClick={()=> handleModifyProduct(product.id)}>Modifier le produit complet</Button>
+                <Button variant="primary" className="m-1" onClick={()=> handleModifyPriceProduct(product.id)}>Modifier le prix du produit</Button>
+                <Button variant="primary" className="m-1" onClick={()=> handleDeleteProduct(product.id)}>Supprimer le produit</Button>
               </Card.Footer>
             </Card>
           </Col>
