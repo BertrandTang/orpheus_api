@@ -40,6 +40,7 @@ function App() {
   return (products &&
 
     <Container>
+      <Button variant="primary" className="d-block mx-auto mb-4" onClick={handleAddProduct}>Ajouter un produit</Button>
       <Row sm={6} md={4} className="g-3">
         {products.map(product => (
           <Col key={product.id}>
@@ -57,7 +58,6 @@ function App() {
                 <Card.Text>
                   <strong>Prix :</strong> {product.price} €
                 </Card.Text>
-                <Button variant="primary" onClick={handleAddProduct}>Ajouter un produit</Button>
               </Card.Body>
             </Card>
           </Col>
