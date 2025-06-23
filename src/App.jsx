@@ -17,7 +17,7 @@ function Products() {
     fetchProduct();
   }, []);
   return (products &&
-    <Container className="">
+    <Container>
       <Row xs={4} sm={4}md={4} className="g-4 justify-content-center">
         {products.map(product => (
           <Col key={product.id} className="d-flex">
