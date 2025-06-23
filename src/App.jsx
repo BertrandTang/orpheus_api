@@ -18,24 +18,21 @@ function Products() {
   }, []);
   return (products &&
     <Container>
-      <Row xs={4} sm={4}md={4} className="g-4 justify-content-center">
+      <Row sm={6} md={4} className="g-3">
         {products.map(product => (
-          <Col key={product.id} className="d-flex">
-            <Card
-              className="card-width-fixed"
-            >
+          <Col key={product.id}>
+            <Card className="h-100 w-100 m-4">
               <Card.Img
                 variant="top"
                 src={product.image}
                 alt={product.title}
-                className="p-0 object-fit-contain d-block card-img-fixed-height"
               />
-              <Card.Body className="d-flex flex-column">
+              <Card.Body>
                 <Card.Title>{product.title}</Card.Title>
-                <Card.Text className="flex-grow-1">
-                  {product.description.substring(0, 100)}...
+                <Card.Text>
+                  {product.description}
                 </Card.Text>
-                <Card.Text className="mt-auto">
+                <Card.Text>
                   <strong>Prix :</strong> {product.price} €
                 </Card.Text>
               </Card.Body>
