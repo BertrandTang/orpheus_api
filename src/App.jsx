@@ -23,9 +23,9 @@ function App() {
     const response = await fetch("https://fakestoreapi.com/products", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Indique que les données envoyées sont au format JSON
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ // Convertit l'objet JavaScript en une chaîne JSON
+      body: JSON.stringify({ 
         title: "Naïnetendo Souitch 2",
         price: 449.99,
         description: "Un super produit ajouté via API",
@@ -37,14 +37,18 @@ function App() {
     alert(` Le produit avec l'id ${data.id} a été créé `)
   }
 
-  async function handleModifyProduct() {
-    const response = await fetch("https://fakestoreapi.com/products/1", {
+  async function handleModifyProduct(productId) {
+    const response = await fetch(`https://fakestoreapi.com/products/${productId}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json", // Indique que les données envoyées sont au format JSON
+        "Content-Type": "application/json", 
       },
-      body: JSON.stringify({ // Convertit l'objet JavaScript en une chaîne JSON
-        price: 559.99,
+      body: JSON.stringify({
+        title: "Naïnetendo Souitch 2",
+        price: 559.99, // Ligne à modifier
+        description: "Un super produit ajouté via API",
+        image: "https://via.placeholder.com/150",
+        category: "electronics",
       }),
     });
     const data = await response.json();
@@ -74,7 +78,7 @@ function App() {
                 </Card.Text>
               </Card.Body>
               <Card.Footer className="d-flex justify-content-center">
-                <Button variant="primary" className="d-flex" onClick={handleModifyProduct}>Modifier</Button>
+                <Button variant="primary" className="d-flex" onClick={()=> handleModifyProduct(product.id)}>Modifier le produit complet</Button>
               </Card.Footer>
             </Card>
           </Col>
