@@ -4,10 +4,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import '../src/assets/styles/app.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Products() {
+
+function App() {
   const [products, setProducts] = useState(null);
+
   useEffect(() => {
     async function fetchProduct() {
       const response = await fetch("https://fakestoreapi.com/products");
@@ -16,7 +17,9 @@ function Products() {
     }
     fetchProduct();
   }, []);
+
   return (products &&
+
     <Container>
       <Row sm={6} md={4} className="g-3">
         {products.map(product => (
@@ -42,15 +45,6 @@ function Products() {
       </Row>
     </Container>
   );
-}
-
-function App() {
-
-  return (
-    <>
-      <Products />
-    </>
-  )
 }
 
 export default App;
