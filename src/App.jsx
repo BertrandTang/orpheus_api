@@ -39,9 +39,6 @@ function App() {
     fetchProducts();
   }, []);
 
-  if (error) return <p>Erreur : {error}</p>;
-  if (loading) return <p>Chargement...</p>;
-
   async function handleAddProduct() {
     try {
       const response = await fetch("https://fakestoreapi.com/products", {
@@ -69,7 +66,7 @@ function App() {
       const data = await response.json();
       alert(`Le produit avec l'id ${data.id} a été créé`);
     } catch (error) {
-      setError("Une erreur est survenue lors de l'ajout du produit.");
+      alert("Une erreur est survenue lors de l'ajout du produit.");
       console.error(error.message);
     }
   }
@@ -104,7 +101,7 @@ function App() {
       const data = await response.json();
       alert(`Le produit avec l'id ${data.id} a été modifié`);
     } catch (error) {
-      setError("Une erreur est survenue lors de la modification du produit.");
+      alert("Une erreur est survenue lors de la modification du produit.");
       console.error(error.message);
     }
   }
@@ -135,7 +132,7 @@ function App() {
       const data = await response.json();
       alert(`Le prix du produit avec l'id ${data.id} a été modifié`);
     } catch (error) {
-      setError(
+      alert(
         "Une erreur est survenue lors de la modification du prix du produit."
       );
       console.error(error.message);
@@ -162,10 +159,13 @@ function App() {
       const data = await response.json();
       alert(`Le produit avec l'id ${data.id} a été supprimé`);
     } catch (error) {
-      setError("Une erreur est survenue lors de la suppression du produit.");
+      alert("Une erreur est survenue lors de la suppression du produit.");
       console.error(error.message);
     }
   }
+
+  if (error) return <p>Erreur : {error}</p>;
+  if (loading) return <p>Chargement...</p>;
 
   return (
     products && (
